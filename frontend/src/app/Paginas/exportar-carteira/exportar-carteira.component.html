@@ -1,0 +1,45 @@
+<app-header [title]="'Exportar Carteira'"></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="container">
+  <div *ngIf="!hasValidWallet" class="error-message">
+    <p>{{ errorMessage || 'Nenhuma carteira disponível para exportar' }}</p>
+    <button class="btn-voltar" (click)="voltar()">
+      <i class="bi bi-arrow-left"></i> Voltar
+    </button>
+  </div>
+
+  <div *ngIf="exporting" class="exporting-message">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Exportando...</span>
+    </div>
+    <p>Exportando carteira, aguarde...</p>
+  </div>
+
+  <div *ngIf="exportPath" class="export-success">
+    <div class="success-icon">
+      <i class="bi bi-check-circle"></i>
+    </div>
+    <h3>Carteira Exportada com Sucesso!</h3>
+    <div class="export-path">
+      <p>Arquivo salvo em:</p>
+      <div class="path-display">
+        <code>{{ exportPath }}</code>
+        <button class="btn-copiar" (click)="copiarExportPath()">
+          <i class="bi bi-clipboard"></i>
+        </button>
+      </div>
+    </div>
+    <button class="btn-voltar" (click)="voltar()">
+      <i class="bi bi-arrow-left"></i> Voltar
+    </button>
+  </div>
+
+  <div *ngIf="exportError" class="error-message">
+    <i class="bi bi-exclamation-triangle"></i>
+    <p>Erro ao exportar a carteira: {{ exportError }}</p>
+    <button class="btn-voltar" (click)="voltar()">
+      <i class="bi bi-arrow-left"></i> Voltar
+    </button>
+  </div>
+</div>

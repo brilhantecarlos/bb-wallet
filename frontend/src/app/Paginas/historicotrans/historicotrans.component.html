@@ -1,0 +1,53 @@
+<app-header [title]="'Histórico de transações'"></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="content-inner">
+      <div class="exportar">
+        <button class="btn-exportar" (click)="exportarTransacoes()">Exportar</button>
+      </div>
+
+      <div *ngIf="loading" class="loading">
+        <p>Carregando transações...</p>
+      </div>
+      
+      <div *ngIf="error" class="error">
+        <p>{{ error }}</p>
+      </div>
+
+      <div *ngIf="!loading && !error">
+        <div *ngIf="transacoes.length === 0" class="empty-state">
+          <p>Nenhuma transação encontrada. As transações aparecerão aqui quando você enviar ou receber Bitcoin.</p>
+        </div>
+
+        <table *ngIf="transacoes.length > 0">
+          <thead>
+            <tr>
+              <th>Data e hora</th>
+              <th>Carteira</th>
+              <th>Endereço</th>
+              <th>Valor</th>
+              <th>Status</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of transacoes">
+              <td>{{ t.data }}</td>
+              <td>{{ t.nome_carteira }}</td>
+              <td>{{ t.endereco | slice:0:12 }}...</td>
+              <td>{{ t.valor }}</td>
+              <td>
+                <span [class]="t.status === 'Confirmada' ? 'status confirmada' : 'status pendente'">
+                  {{ t.status }}
+                </span>
+              </td>
+              <td>
+                <span [class]="t.type === 'send' ? 'tipo enviado' : 'tipo recebido'">
+                  {{ t.type === 'send' ? 'Enviado' : 'Recebido' }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>

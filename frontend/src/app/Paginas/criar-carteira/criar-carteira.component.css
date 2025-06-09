@@ -1,0 +1,101 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  box-sizing: border-box;
+  font-family: Segoe UI, Arial, sans-serif;
+}
+
+/* Deixa o sidebar fixo à esquerda */
+app-sidebar {
+  position: fixed;
+  top: 70px; /* altura do header */
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 70px);
+  z-index: 1000;
+}
+
+/* Header fixo no topo */
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  z-index: 1100;
+}
+
+/* Conteúdo principal da tela */
+.criar-carteira-container {
+  margin-left: 250px; /* deixa espaço pro sidebar */
+  padding: 100px 40px 40px 40px; /* espaço para o header + padding interno */
+  box-sizing: border-box;
+  background-color: #ffffff;
+  min-height: calc(100vh - 70px);
+  position: relative;
+}
+
+.voltar {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  color: #002f8d;
+}
+
+.form-box {
+  background-color: #eaf1f9;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-box h2 {
+  background-color: #002f8d;
+  color: white;
+  padding: 12px;
+  border-radius: 8px 8px 0 0;
+  font-family: monospace;
+  font-size: 20px;
+  margin-top: -30px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+label {
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: #001f5c;
+}
+
+input, select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.criar-btn {
+  background-color: #002f8d;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.criar-btn:hover {
+  background-color: #001f5c;
+}

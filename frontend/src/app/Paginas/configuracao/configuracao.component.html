@@ -1,0 +1,26 @@
+<app-header [title]="'Configurações'"></app-header>
+<app-sidebar></app-sidebar>
+<div class="config-container">
+  <h2>Configurações</h2>
+
+  <div class="form-group">
+    <label for="idioma">Idioma</label>
+    <select id="idioma" [(ngModel)]="idioma">
+      <option value="pt">Português</option>
+      <option value="en">Inglês</option>
+      <option value="es">Espanhol</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="endereco">Endereço</label>
+    <input id="endereco" type="text" [(ngModel)]="endereco" />
+  </div>
+
+  <div class="form-group">
+    <label for="porta">Porta</label>
+    <input id="porta" type="number" [(ngModel)]="porta" />
+  </div>
+
+  <button class="salvar-btn" (click)="salvarConfiguracoes()">Salvar</button>
+</div>

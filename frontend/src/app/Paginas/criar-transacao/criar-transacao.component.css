@@ -1,0 +1,172 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  box-sizing: border-box;
+  font-family: Segoe UI, Arial, sans-serif;
+}
+
+/* Deixa o sidebar fixo à esquerda */
+app-sidebar {
+  position: fixed;
+  top: 70px; /* altura do header */
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 70px);
+  z-index: 1000;
+}
+
+/* Header fixo no topo */
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  z-index: 1100;
+}
+
+/* Conteúdo principal da tela */
+.content {
+  margin-left: 250px; /* deixa espaço pro sidebar */
+  padding: 100px 40px 40px 40px; /* espaço para o header + padding interno */
+  box-sizing: border-box;
+  background-color: #ffffff;
+  min-height: calc(100vh - 70px);
+}
+
+.formulario {
+  max-width: 600px;
+  margin-top: 2rem;
+}
+
+.formulario label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #4a4a4a;
+}
+
+.formulario input[type="text"],
+.formulario input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.error-message {
+  color: #e74c3c;
+  background-color: #fdeded;
+  border-left: 4px solid #e74c3c;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.botoes {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn-cancelar,
+.btn-enviar {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-cancelar {
+  background-color: #f0f0f0;
+  color: #555;
+}
+
+.btn-enviar {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-cancelar:hover {
+  background-color: #e0e0e0;
+}
+
+.btn-enviar:hover {
+  background-color: #2980b9;
+}
+
+.btn-cancelar:disabled,
+.btn-enviar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.taxas {
+  margin: 10px 0;
+}
+
+.taxas label {
+  display: block;
+  margin: 8px 0;
+  font-weight: normal;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 1.2rem;
+  color: #1c1c1c;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 0.4rem;
+}
+
+.taxas {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.taxas label {
+  font-weight: normal;
+}
+
+.botoes {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btn-cancelar,
+.btn-enviar {
+  padding: 0.6rem 2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-cancelar {
+  background-color: #e0e0e0;
+  color: #1c1c1c;
+}
+
+.btn-enviar {
+  background-color: #2d3f85;
+  color: #fff;
+}

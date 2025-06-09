@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Consultar Status de Transação Bitcoin</h2>
+
+  <label for="txid">TXID:</label>
+  <input type="text" [(ngModel)]="txid" placeholder="Hash da transação (64 caracteres)">
+
+  <label for="network">Rede:</label>
+  <select [(ngModel)]="network">
+    <option value="mainnet">Mainnet</option>
+    <option value="testnet">Testnet</option>
+  </select>
+
+  <button (click)="consultarTransacao()">Consultar</button>
+
+  <div *ngIf="resultado" class="resultado">
+    <h3>Resultado</h3>
+    <p><strong>Status:</strong> {{ resultado.status }}</p>
+    <p><strong>Confirmações:</strong> {{ resultado.confirmations }}</p>
+    <p *ngIf="resultado.confirmations === 0">Transação no mempool (ainda não incluída em bloco)</p>
+    <p *ngIf="resultado.confirmations > 0 && resultado.confirmations < 6">Transação confirmada, mas reversível</p>
+    <p *ngIf="resultado.confirmations >= 6">Transação irreversível</p>
+    <p><strong>Bloco:</strong> {{ resultado.block_height }} (Hash: {{ resultado.block_hash }})</p>
+    <p><strong>Timestamp:</strong> {{ resultado.timestamp }}</p>
+    <p><strong>Explorer:</strong> <a [href]="resultado.explorer_url" target="_blank">Ver no Explorador</a></p>
+  </div>
+
+  <div *ngIf="erro" class="erro">
+    <p>{{ erro }}</p>
+  </div>
+</div>

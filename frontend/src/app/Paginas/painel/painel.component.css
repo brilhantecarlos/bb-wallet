@@ -1,0 +1,133 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  box-sizing: border-box;
+  font-family: Segoe UI, Arial, sans-serif;
+}
+
+/* Deixa o sidebar fixo à esquerda */
+app-sidebar {
+  position: fixed;
+  top: 70px; /* altura do header */
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 70px);
+  z-index: 1000;
+}
+
+/* Header fixo no topo */
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  z-index: 1100;
+}
+
+/* Conteúdo principal da tela */
+.content {
+  margin-left: 250px; /* deixa espaço pro sidebar */
+  padding: 100px 40px 40px 40px; /* espaço para o header + padding interno */
+  box-sizing: border-box;
+  background-color: #ffffff;
+  min-height: calc(100vh - 70px);
+}
+  
+  .section-title {
+  font-size: 28px;
+  color: #001f5c;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+  
+  .cards {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    width: 200px;
+  }
+  
+  .card-header {
+    background: #002f6c;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 8px 8px 0 0;
+    font-size: 1rem;
+  }
+  
+  .card-body {
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem 0;
+    color: #002f6c;
+  }
+  
+  .wallet-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .wallet-table th, .wallet-table td {
+    border: 1px solid #ccc;
+    padding: 0.8rem;
+  }
+  
+  .wallet-table th {
+    background: #e8f0fe;
+    font-weight: bold;
+  }
+  
+  .loading, .error, .empty-state {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  
+  .loading p {
+    color: #002f6c;
+  }
+  
+  .error p {
+    color: #dc3545;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .action-btn, .view-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: #002f6c;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .action-btn:hover, .view-btn:hover {
+    background-color: #004aad;
+    cursor: pointer;
+  }
+  
+  .view-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }

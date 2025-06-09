@@ -1,0 +1,45 @@
+<app-header [title]="'Criar Carteira'"></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="criar-carteira-container">
+  <button class="voltar" (click)="voltar()">←</button>
+
+  <div class="form-box">
+    <h2>Criar nova carteira</h2>
+
+    <div class="form-group">
+      <label for="nomeCarteira">Nome da carteira</label>
+      <input id="nomeCarteira" type="text" [(ngModel)]="nomeCarteira" placeholder="Carteira X" />
+    </div>
+
+
+    <div class="form-group">
+      <label for="method">Método de geração</label>
+      <select id="method" [(ngModel)]="method">
+        <option value="entropy">Entropy</option>
+        <option value="bip39">BIP39</option>
+        <option value="bip32">BIP32</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="network">Rede</label>
+      <select id="network" [(ngModel)]="network">
+        <option value="testnet">Testnet</option>
+        <option value="mainnet">Mainnet</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="keyFormat">Formato da chave</label>
+      <select id="keyFormat" [(ngModel)]="keyFormat">
+        <option value="p2pkh">P2PKH</option>
+        <option value="p2sh">P2SH</option>
+        <option value="p2wpkh">P2WPKH</option>
+        <option value="p2tr">P2TR</option>
+      </select>
+    </div>
+
+    <button class="criar-btn" (click)="criarCarteira()">Criar carteira</button>
+  </div>
+</div>

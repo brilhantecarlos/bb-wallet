@@ -1,0 +1,371 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  box-sizing: border-box;
+  font-family: Segoe UI, Arial, sans-serif;
+}
+
+/* Deixa o sidebar fixo à esquerda */
+app-sidebar {
+  position: fixed;
+  top: 70px; /* altura do header */
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 70px);
+  z-index: 1000;
+}
+
+/* Header fixo no topo */
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  z-index: 1100;
+}
+
+/* Conteúdo principal da tela */
+.container {
+  margin-left: 250px; /* deixa espaço pro sidebar */
+  padding: 100px 40px 40px 40px; /* espaço para o header + padding interno */
+  box-sizing: border-box;
+  background-color: #ffffff;
+  min-height: calc(100vh - 70px);
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #0a3d91;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  margin-bottom: 20px;
+}
+
+.mini-loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0a3d91;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 2s linear infinite;
+  margin: 15px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.info-mensagem {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+/* Cabeçalho da carteira */
+.cabecalho-carteira {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cabecalho-carteira h2 {
+  font-size: 24px;
+  color: #0a3d91;
+  margin: 0;
+}
+
+.acoes {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-voltar, .btn-copiar, .btn-toggle-visibility {
+  background-color: #0a3d91;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 5px;
+}
+
+.btn-copiar:hover, .btn-toggle-visibility:hover {
+  background-color: #0d4db3;
+}
+
+.warning-text {
+  color: #d32f2f;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: block;
+}
+
+.copied-tooltip {
+  position: absolute;
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.copied-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* Saldo */
+.card-saldo {
+  background-color: #0a3d91;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.titulo-saldo {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.valor-saldo {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.info-box {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  border: 1px solid #e9ecef;
+}
+
+.info-box h3 {
+  color: #0a3d91;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 10px;
+}
+
+.campo-info {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  min-height: 70px; /* Garante altura mínima consistente */
+}
+
+.campo-info label {
+  margin-bottom: 5px;
+  color: #495057;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.campo-info input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #f8f9fa;
+  height: 38px; /* Mesma altura dos outros inputs */
+  box-sizing: border-box;
+}
+
+.input-group {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.input-group input {
+  flex: 1;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 38px; /* Altura padrão para inputs */
+  padding: 6px 12px;
+  border: 1px solid #ced4da;
+  border-right: none;
+}
+
+.btn-copiar, .btn-toggle-visibility {
+  background-color: #6c757d;
+  color: white;
+  border: 1px solid #6c757d;
+  padding: 0 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: auto;
+  margin-right: 8px;
+  border-radius: 4px;
+}
+
+.btn-copiar:last-child {
+  margin-right: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.btn-copiar:hover, .btn-toggle-visibility:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-toggle-visibility {
+  background-color: #343a40; /* Cor escura por padrão */
+  color: #ffffff !important; /* Cor do ícone branca */
+  border: 1px solid #343a40 !important;
+  border-left: none !important;
+  border-radius: 0;
+  transition: background-color 0.2s ease;
+}
+
+.btn-toggle-visibility:hover {
+  background-color: #23272b; /* Cor um pouco mais clara no hover */
+  color: #ffffff !important;
+}
+
+/* Estilo quando a chave está visível */
+.btn-toggle-visibility.showing {
+  background-color: #e9ecef;
+  color: #495057 !important;
+  border-color: #ced4da !important;
+}
+
+/* Ajuste para o ícone do olho */
+.btn-toggle-visibility i {
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.transacoes-box, .utxos-box {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  border: 1px solid #e9ecef;
+}
+
+.transacoes-box h3, .utxos-box h3 {
+  color: #0a3d91;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 10px;
+}
+
+.tabela-container {
+  overflow-x: auto;
+}
+
+.tabela-transacoes, .tabela-utxos {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela-transacoes th, .tabela-utxos th {
+  background-color: #e9ecef;
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+  color: #495057;
+}
+
+.tabela-transacoes td, .tabela-utxos td {
+  padding: 10px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.tabela-transacoes tr:hover, .tabela-utxos tr:hover {
+  background-color: #f1f3f5;
+}
+
+.txid-col {
+  font-family: monospace;
+}
+
+.tx-entrada {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.btn-toggle-visibility:hover {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.btn-toggle-visibility i {
+  font-size: 1.1rem;
+}
+
+.input-group input[readonly] {
+  background-color: #f8f9fa;
+}
+
+.input-group button:not(:last-child) {
+  border-right: none;
+  border-radius: 0;
+}
+
+.input-group button:first-child {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.tx-saida {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.status-confirmado, .status-disponivel {
+  color: #28a745;
+}
+
+.status-pendente, .status-indisponivel {
+  color: #ffc107;
+}

@@ -1,0 +1,31 @@
+<div class="app-layout">
+  <app-header class="header"></app-header>
+  <div class="main">
+    <app-sidebar class="sidebar"></app-sidebar>
+    <div class="content-area">
+      <div class="transmitir-container">
+        <div class="content">
+          <h2>Transmitir Transação</h2>
+          <form (ngSubmit)="transmitirTransacao()">
+            <label for="txHex">Insira o Hex da Transação:</label><br>
+            <textarea id="txHex" [(ngModel)]="txHexAssinada" name="txHex" rows="4" cols="50" required></textarea><br><br>
+            <button type="submit">Transmitir Transação</button>
+          </form>
+
+          <hr>
+
+          <h3>Estimar Taxa de Transação</h3>
+          <div class="priority-buttons">
+            <button (click)="buscarEstimativaTaxa('high', 'testnet')">Alta Prioridade</button>
+            <button (click)="buscarEstimativaTaxa('medium', 'testnet')">Prioridade Média</button>
+            <button (click)="buscarEstimativaTaxa('low', 'testnet')">Baixa Prioridade</button>
+          </div>
+
+          <div *ngIf="taxaEstimativa !== null" class="taxa-resultado">
+            <p>{{ mensagemTaxa }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

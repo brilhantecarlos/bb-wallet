@@ -1,0 +1,13 @@
+<div class="sidebar">
+  <ul>
+    <li *ngFor="let item of menu"
+        (click)="selectItem(item)"
+        [class.active]="isActive(item.route)">
+      {{ item.name }}
+    </li>
+  </ul>
+  <div class="bottom-icons">
+    <span>👤</span>
+    <span>🔗</span>
+  </div>
+</div>

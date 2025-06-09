@@ -1,0 +1,82 @@
+/* Container geral */
+.export-container {
+  margin-top: 70px; /* espaço para o header fixo */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Alinha mais acima */
+  padding-top: 60px; /* espaço superior para não colar no topo */
+  height: calc(100vh - 70px);
+  background-color: #ffffff;
+}
+
+
+/* Caixa central */
+.export-box {
+  background-color: #e5edf8;
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+/* Título */
+.export-title {
+  background-color: #002f8d;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 12px 12px 0 0;
+  margin: -40px -30px 20px -30px;
+}
+
+/* Texto de instrução */
+.export-text {
+  font-size: 16px;
+  color: #001f5c;
+  margin-bottom: 30px;
+}
+
+/* Botões de exportação */
+.export-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.export-option {
+  flex: 1;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: white;
+  color: #002f8d;
+  border: 2px solid #002f8d;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.export-option:hover {
+  background-color: #d6e4f5;
+}
+
+/* Botão de cancelar */
+.cancel-button {
+  background-color: #002f8d;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+  background-color: #001a4f;
+}

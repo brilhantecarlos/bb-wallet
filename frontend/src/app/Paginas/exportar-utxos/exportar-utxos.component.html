@@ -1,0 +1,15 @@
+<app-header></app-header>
+
+<div class="export-container">
+  <div class="export-box">
+    <div class="export-title">Exportar UTXOs</div>
+    <p class="export-text">Escolha um formato para exportar a lista de UTXOs</p>
+    
+    <div class="export-buttons">
+      <button class="export-option" (click)="exportar('csv')">CSV</button>
+      <button class="export-option" (click)="exportar('json')">JSON</button>
+    </div>
+
+    <button class="cancel-button" (click)="cancelar()">Cancelar</button>
+  </div>
+</div>

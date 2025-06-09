@@ -1,0 +1,53 @@
+.sidebar {
+  font-family: 'Noto Sans', sans-serif;
+  width: 200px;
+  background: #002f6c;
+  color: rgb(255, 255, 255);
+  border: solid 3px #003886;
+  border-radius: 00px 18px 0px 18px;
+  padding: 1rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+}
+
+li {
+  font-family: inherit;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  border-radius: 18px;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  font-weight: 500;
+  font-size: 1.08rem;
+}
+
+li:hover {
+  background: #003b8e;
+}
+
+li.active {
+  background: linear-gradient(90deg, #ffd400 0%, #ffe066 100%);
+  color: #002f6c;
+  font-weight: bold;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.507);
+  border-radius: 18px;
+  border: 2px solid #dbb700;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.bottom-icons {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 2rem;
+  font-size: 1.2rem;
+  font-family: inherit;
+}

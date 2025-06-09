@@ -1,0 +1,44 @@
+<div class="container">
+  <h2>Construir Transação Bitcoin Não Assinada</h2>
+
+  <label for="network">Rede:</label>
+  <select [(ngModel)]="network">
+    <option value="mainnet">Mainnet</option>
+    <option value="testnet">Testnet</option>
+  </select>
+
+  <h3>Inputs (UTXOs)</h3>
+  <div *ngFor="let input of inputs; let i = index" class="input-box">
+    <input type="text" placeholder="TXID" [(ngModel)]="input.txid">
+    <input type="number" placeholder="Vout" [(ngModel)]="input.vout">
+    <input type="number" placeholder="Value (satoshis)" [(ngModel)]="input.value">
+    <input type="text" placeholder="Script (opcional)" [(ngModel)]="input.script">
+    <button (click)="removerInput(i)">Remover</button>
+  </div>
+  <button (click)="adicionarInput()">Adicionar Input</button>
+
+  <h3>Outputs (Destinos)</h3>
+  <div *ngFor="let output of outputs; let i = index" class="output-box">
+    <input type="text" placeholder="Endereço de destino" [(ngModel)]="output.address">
+    <input type="number" placeholder="Valor (satoshis)" [(ngModel)]="output.value">
+    <button (click)="removerOutput(i)">Remover</button>
+  </div>
+  <button (click)="adicionarOutput()">Adicionar Output</button>
+
+  <label for="fee">Taxa (sat/vB):</label>
+  <input type="number" [(ngModel)]="fee_rate">
+
+  <button (click)="construirTransacao()">Construir Transação</button>
+
+  <div *ngIf="resultado" class="resultado">
+    <h3>Resultado</h3>
+    <p><strong>TXID:</strong> {{ resultado.txid }}</p>
+    <p><strong>Raw Transaction:</strong></p>
+    <textarea cols="60" rows="6" readonly>{{ resultado.raw_transaction }}</textarea>
+    <p><strong>Fee:</strong> {{ resultado.fee }} satoshis</p>
+  </div>
+
+  <div *ngIf="erro" class="erro">
+    <p>{{ erro }}</p>
+  </div>
+</div>

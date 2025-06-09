@@ -1,0 +1,93 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Deixa o sidebar fixo à esquerda */
+app-sidebar {
+  position: fixed;
+  top: 70px; /* altura do header */
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 70px);
+  z-index: 1000;
+}
+
+/* Header fixo no topo */
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  z-index: 1100;
+}
+
+/* Conteúdo principal da tela */
+.config-container {
+  margin-left: 250px; /* deixa espaço pro sidebar */
+  padding: 100px 40px 40px 40px; /* espaço para o header + padding interno */
+  box-sizing: border-box;
+  background-color: #ffffff;
+  min-height: calc(100vh - 70px);
+}
+
+/* Título */
+.config-container h2 {
+  font-size: 28px;
+  color: #001f5c;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Grupos de formulário */
+.form-group {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+/* Labels */
+label {
+  font-size: 15px;
+  color: #001f5c;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Campos de entrada */
+input,
+select {
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: #002f8d;
+}
+
+/* Botão salvar */
+.salvar-btn {
+  background-color: #002f8d;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.salvar-btn:hover {
+  background-color: #001f5c;
+}

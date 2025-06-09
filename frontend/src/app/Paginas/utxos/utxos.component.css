@@ -1,0 +1,178 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  box-sizing: border-box;
+  font-family: Segoe UI, Arial, sans-serif;
+}
+
+/* Deixa o sidebar fixo à esquerda */
+app-sidebar {
+  position: fixed;
+  top: 70px; /* altura do header */
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 70px);
+  z-index: 1000;
+}
+
+/* Header fixo no topo */
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  z-index: 1100;
+}
+
+/* Conteúdo principal da tela */
+.utxos-container {
+  margin-left: 250px; /* deixa espaço pro sidebar */
+  padding: 100px 40px 40px 40px; /* espaço para o header + padding interno */
+  box-sizing: border-box;
+  background-color: #ffffff;
+  min-height: calc(100vh - 70px);
+}
+
+.utxos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.utxos-header h2 {
+  font-size: 28px;
+  color: #002f8d;
+  font-weight: bold;
+  margin: 0;
+}
+
+.export-button {
+  background-color: #002f8d;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.export-button:hover {
+  background-color: #001f5c;
+}
+
+.address-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.address-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.address-input button {
+  padding: 10px 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.address-input button:hover {
+  background-color: #218838;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.balance-info {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.info-message {
+  color: #666;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+  max-width: 300px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.utxos-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.utxos-table thead {
+  background-color: #e6f0ff;
+}
+
+.utxos-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #001f5c;
+  font-size: 14px;
+}
+
+.utxos-table td {
+  padding: 12px 16px;
+  border-top: 1px solid #f0f0f0;
+  font-size: 14px;
+  color: #333;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .utxos-container {
+    margin-left: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .utxos-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .address-input {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Ajustes para visualização em dispositivos móveis */
+  app-sidebar {
+    display: none;
+  }
+}

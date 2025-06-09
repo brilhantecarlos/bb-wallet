@@ -1,0 +1,36 @@
+<div class="status-container">
+  <h2>Consultar Status da Transação</h2>
+  <div>
+    <input [(ngModel)]="txid" placeholder="Insira o TXID" maxlength="64" />
+    <select [(ngModel)]="network">
+      <option value="testnet">Testnet</option>
+      <option value="mainnet">Mainnet</option>
+    </select>
+    <button (click)="consultarStatus()" [disabled]="loading">Consultar</button>
+  </div>
+
+  <div *ngIf="loading">Consultando status...</div>
+
+  <div *ngIf="errorMsg" class="error">{{ errorMsg }}</div>
+
+  <div *ngIf="statusResponse">
+    <h3>Status da Transação</h3>
+    <p><strong>TXID:</strong> {{ statusResponse.txid }}</p>
+    <p><strong>Status:</strong> {{ statusResponse.status }}</p>
+    <p *ngIf="statusResponse.confirmations !== undefined">
+      <strong>Confirmações:</strong> {{ statusResponse.confirmations }}
+    </p>
+    <p *ngIf="statusResponse.block_height">
+      <strong>Altura do Bloco:</strong> {{ statusResponse.block_height }}
+    </p>
+    <p *ngIf="statusResponse.block_hash">
+      <strong>Hash do Bloco:</strong> {{ statusResponse.block_hash }}
+    </p>
+    <p *ngIf="statusResponse.timestamp">
+      <strong>Data e Hora:</strong> {{ statusResponse.timestamp }}
+    </p>
+    <p *ngIf="statusResponse.explorer_url">
+      <a [href]="statusResponse.explorer_url" target="_blank">Ver no Explorer</a>
+    </p>
+  </div>
+</div>

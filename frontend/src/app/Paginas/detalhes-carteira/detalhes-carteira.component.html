@@ -1,0 +1,181 @@
+<app-header [title]="'Detalhes da Carteira'"></app-header>
+<app-sidebar></app-sidebar>
+<div class="container">
+  <div *ngIf="carregandoCarteira" class="loading-container">
+    <div class="loader"></div>
+    <p>Carregando detalhes da carteira...</p>
+  </div>
+
+  <div *ngIf="erro && !carregandoCarteira" class="error-message">
+    <p>{{ erro }}</p>
+    <button class="btn-voltar" (click)="voltarParaCarteiras()">
+      <i class="bi bi-arrow-left"></i> Voltar para Carteiras
+    </button>
+  </div>
+
+  <div *ngIf="carteira && !carregandoCarteira">
+    <div class="cabecalho-carteira">
+      <h2>{{ carteira.name }}</h2>
+      <div class="acoes">
+        <button class="btn-voltar" (click)="voltarParaCarteiras()">
+          <i class="bi bi-arrow-left"></i> Voltar
+        </button>
+        <button class="btn-exportar" (click)="exportarCarteira()">
+          <i class="bi bi-download"></i> Exportar
+        </button>
+      </div>
+    </div>
+
+    <div class="card-saldo">
+      <div class="titulo-saldo">Saldo Atual</div>
+      <div *ngIf="carregandoSaldo" class="mini-loader"></div>
+      <div *ngIf="!carregandoSaldo" class="valor-saldo">{{ formatBtcValue(saldo) }} BTC</div>
+    </div>
+    
+    <div class="info-box">
+      <h3>Informações da Carteira</h3>
+      
+      <div class="campo-info">
+        <label>Endereço</label>
+        <div class="input-group">
+          <input #enderecoInput type="text" [value]="carteira.address" readonly>
+          <button class="btn-copiar" (click)="copiarTexto(enderecoInput)">
+            <i class="bi bi-clipboard"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="campo-info">
+        <label>Chave Pública</label>
+        <div class="input-group">
+          <input #publicKeyInput type="text" [value]="carteira.public_key" readonly>
+        </div>
+      </div>
+
+      <div class="campo-info">
+        <label>Chave Privada</label>
+        <div class="input-group">
+          <input #privateKeyInput 
+                 [type]="showPrivateKey ? 'text' : 'password'" 
+                 [value]="carteira.private_key" 
+                 readonly>
+          <button type="button" 
+                  class="btn-toggle-visibility" 
+                  [class.showing]="showPrivateKey"
+                  (click)="showPrivateKey = !showPrivateKey"
+                  [title]="showPrivateKey ? 'Ocultar chave privada' : 'Mostrar chave privada'">
+            <i class="bi" [class.bi-eye]="!showPrivateKey" [class.bi-eye-slash]="showPrivateKey"></i>
+          </button>
+          <button class="btn-copiar" (click)="copiarTexto(privateKeyInput)">
+            <i class="bi bi-clipboard"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="campo-info">
+        <label>Formato</label>
+        <input type="text" [value]="carteira.format" readonly>
+      </div>
+
+      <div class="campo-info">
+        <label>Rede</label>
+        <input type="text" [value]="carteira.network" readonly>
+      </div>
+
+      <div class="campo-info" *ngIf="carteira.derivation_path">
+        <label>Caminho de Derivação</label>
+        <input type="text" [value]="carteira.derivation_path" readonly>
+      </div>
+
+      <div class="campo-info" *ngIf="carteira.mnemonic">
+        <label>Frase Mnemônica</label>
+        <div class="input-group">
+          <input #mnemonicInput type="text" [value]="carteira.mnemonic" readonly>
+          <button class="btn-copiar" (click)="copiarTexto(mnemonicInput)">
+            <i class="bi bi-clipboard"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="transacoes-box">
+      <h3>Transações</h3>
+      
+      <div *ngIf="carregandoTransacoes" class="mini-loader"></div>
+      
+      <div *ngIf="!carregandoTransacoes && transacoes.length === 0" class="info-mensagem">
+        Nenhuma transação registrada para esta carteira.
+      </div>
+      
+      <div *ngIf="!carregandoTransacoes && transacoes.length > 0" class="tabela-container">
+        <table class="tabela-transacoes">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Tipo</th>
+              <th>Valor</th>
+              <th>Taxa</th>
+              <th>Status</th>
+              <th>TXID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tx of transacoes">
+              <td>{{ tx.timestamp | date:'dd/MM/yyyy HH:mm' }}</td>
+              <td>
+                <span [ngClass]="tx.type === 'send' ? 'tx-saida' : 'tx-entrada'">
+                  {{ tx.type === 'send' ? 'Envio' : 'Recebimento' }}
+                </span>
+              </td>
+              <td>{{ tx.amount.toFixed(8) }} BTC</td>
+              <td>{{ tx.fee.toFixed(8) }} BTC</td>
+              <td>
+                <span [ngClass]="tx.status === 'confirmed' ? 'status-confirmado' : 'status-pendente'">
+                  {{ tx.status === 'confirmed' ? 'Confirmado' : 'Pendente' }}
+                </span>
+              </td>
+              <td class="txid-col">{{ tx.txid.substring(0, 10) }}...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="utxos-box">
+      <h3>UTXOs Disponíveis</h3>
+      
+      <div *ngIf="carregandoUTXOs" class="mini-loader"></div>
+      
+      <div *ngIf="!carregandoUTXOs && utxos.length === 0" class="info-mensagem">
+        Nenhum UTXO disponível para esta carteira.
+      </div>
+      
+      <div *ngIf="!carregandoUTXOs && utxos.length > 0" class="tabela-container">
+        <table class="tabela-utxos">
+          <thead>
+            <tr>
+              <th>TXID</th>
+              <th>Vout</th>
+              <th>Valor</th>
+              <th>Confirmações</th>
+              <th>Disponível</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let utxo of utxos">
+              <td class="txid-col">{{ utxo?.txid ? utxo.txid.substring(0, 10) + '...' : 'N/A' }}</td>
+              <td>{{ utxo?.vout !== undefined ? utxo.vout : 'N/A' }}</td>
+              <td>{{ formatBtcValue(utxo?.amount) }} BTC</td>
+              <td>{{ utxo?.confirmations !== undefined ? utxo.confirmations : '0' }}</td>
+              <td>
+                <span [ngClass]="utxo?.spendable ? 'status-disponivel' : 'status-indisponivel'">
+                  {{ utxo?.spendable ? 'Sim' : 'Não' }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

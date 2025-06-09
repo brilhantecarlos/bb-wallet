@@ -1,0 +1,25 @@
+.header, .header * {
+  font-family: 'Righteous', cursive;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #ffce00;
+  padding: 0.8rem 1rem;
+  height: 40px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+  
+.logo {
+  height: 30px;
+  margin-left: 1rem;
+}
+
+.title {
+  font-size: 2.2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.562);
+  font-weight: bold;
+  color: #003983;
+  font-family: 'Segoe UI', sans-serif;
+}

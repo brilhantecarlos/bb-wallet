@@ -1,0 +1,123 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  box-sizing: border-box;
+  font-family: Segoe UI, Arial, sans-serif;
+}
+
+/* Deixa o sidebar fixo à esquerda */
+app-sidebar {
+  position: fixed;
+  top: 70px; /* altura do header */
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 70px);
+  z-index: 1000;
+}
+
+/* Header fixo no topo */
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  z-index: 1100;
+}
+
+/* Conteúdo principal da tela */
+.content-inner {
+  margin-left: 250px; /* deixa espaço pro sidebar */
+  padding: 100px 40px 40px 40px; /* espaço para o header + padding interno */
+  box-sizing: border-box;
+  background-color: #ffffff;
+  min-height: calc(100vh - 70px);
+  overflow-y: auto;
+}
+  
+  .exportar {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem 0;
+  }
+  
+  .btn-exportar {
+    background-color: #ffde17;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+  }
+  
+  th {
+    text-align: left;
+    padding: 0.8rem;
+    color: #1c1c1c;
+    border-bottom: 2px solid #1c1c1c;
+  }
+  
+  td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #ccc;
+    color: #1c1c1c;
+  }
+  
+  .status {
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .confirmada {
+    background-color: #d0d9f7;
+    color: #2d3f85;
+  }
+  
+  .falhou {
+    background-color: #fff0a4;
+    color: #b67c00;
+  }
+  
+  .pendente {
+    background-color: #f0f0f0;
+    color: #666666;
+  }
+
+  .tipo {
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+  }
+
+  .enviado {
+    background-color: #ffebee;
+    color: #c62828;
+  }
+
+  .recebido {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .loading, .error, .empty-state {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 2rem;
+  }
+
+  .error {
+    color: #dc3545;
+  }

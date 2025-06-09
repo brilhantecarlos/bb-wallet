@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<div class="exportar-container">
+  <button class="voltar" (click)="voltar()">
+    ←
+  </button>
+
+  <div class="form-box">
+    <h2>Exportar</h2>
+
+    <div class="form-group">
+      <label>Período</label>
+      <div class="date-group">
+        <input type="date" [(ngModel)]="dataInicio" />
+        <input type="date" [(ngModel)]="dataFim" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Formato do arquivo</label>
+      <div class="radio-group">
+        <label><input type="radio" name="formato" value="csv" [(ngModel)]="formatoSelecionado" /> CSV</label>
+        <label><input type="radio" name="formato" value="excel" [(ngModel)]="formatoSelecionado" /> Excel (.xlsx)</label>
+        <label><input type="radio" name="formato" value="json" [(ngModel)]="formatoSelecionado" /> JSON</label>
+      </div>
+    </div>
+
+    <div class="botoes">
+      <button class="cancelar" (click)="voltar()">Cancelar</button>
+      <button class="exportar" (click)="exportar()">Exportar</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<app-header [title]="'BB Chain'"></app-header>
+<app-sidebar></app-sidebar>
+<div class="content">
+        <h2 class="section-title">Painel</h2>
+        
+        <div *ngIf="loading" class="loading">
+          <p>Carregando dados...</p>
+        </div>
+        
+        <div *ngIf="error" class="error">
+          <p>{{ error }}</p>
+        </div>
+        
+        <div *ngIf="!loading && !error">
+          <div class="cards">
+            <div class="card">
+              <div class="card-header">Saldo Total <span>💼</span></div>
+              <div class="card-body">{{ formatBtcValue(totalBalance) }} BTC</div>
+            </div>
+    
+            <div class="card">
+              <div class="card-header">Total de Transações</div>
+              <div class="card-body">{{ totalTransactions }}</div>
+            </div>
+          </div>
+    
+          <div class="actions">
+            <a [routerLink]="['/criar-carteira']" class="action-btn">Criar Nova Carteira</a>
+            <a [routerLink]="['/carteira']" class="action-btn">Ver Todas as Carteiras</a>
+          </div>
+    
+          <h2 class="section-title">Carteiras</h2>
+    
+          <div *ngIf="wallets.length === 0" class="empty-state">
+            <p>Nenhuma carteira encontrada. Crie uma nova carteira para começar.</p>
+          </div>
+    
+          <table *ngIf="wallets.length > 0" class="wallet-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let wallet of wallets">
+                <td>{{ wallet.name }}</td>
+                <td>{{ wallet.address | slice:0:20 }}...</td>
+                <td>
+                  <a [routerLink]="['/detalhes-carteira', wallet.address]" class="action-btn">Ver Detalhes</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+</div>
